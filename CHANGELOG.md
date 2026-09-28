@@ -1,5 +1,16 @@
 # @nanocollective/nanocoder
 
+# 1.32.0
+
+- Enhanced `/help` with categorized command listings and command-specific details, including usage, supported options and subcommands, aliases, and examples. Closes #1308.
+- Add `nanocoder storage`, a read-only interactive inspector for saved sessions and artifacts across Nanocoder and timeline/checkpoint data in the current project. Use `nanocoder storage --format json` for a non-interactive report suitable for scripts.
+
+- Fix `loadAppConfig` stripping the `.source` field when unwrapping MCP server configs, which silently disabled `validateProjectConfigSecurity`'s hardcoded-credential scanner for project-level MCP servers. Closes #1248.
+- update test - mcp-client-spec.ts
+- Fixed the sub-agent transcript appending "..." to every tool result. The view sliced each result to 100 characters and added the ellipsis unconditionally, so a short result like `OK` rendered as `OK...` and implied output that was never truncated. The ellipsis now appears only when the content is actually past the limit, matching the guarded pattern in the git-commit tool card. Closes #1408.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder.
+
 # 1.31.0
 
 - Added a first-class provider template for Cheaper Inference, an OpenAI-compatible gateway, to the `/settings providers` wizard. Selecting it fills in the base URL (`https://api.cheaperinference.com/v1`) so only an API key and a model name are needed, and the wizard can fetch the account's model list over the standard `/models` endpoint.
